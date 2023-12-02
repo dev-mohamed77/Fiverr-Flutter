@@ -89,7 +89,7 @@ class _OrderConfirmBodyState extends ConsumerState<OrderConfirmBody> {
             padding: const EdgeInsets.symmetric(vertical: 15),
             child: AppButton(
               title: "Confirm Order",
-              onPressed: () {
+              onPressed: () async {
                 ref.read(selectOrderProvider.notifier).update((state) =>
                     state?.copyWith(description: _descriptionController.text));
 
