@@ -123,6 +123,7 @@ class GetMessagesByConversationIdUsecase
     final items = state.value ?? [];
 
     final message = MessageDataModel(
+      id: "",
       message: model.message,
       sender: model.sender,
       conversation: MessageConversationModel(id: model.conversation),

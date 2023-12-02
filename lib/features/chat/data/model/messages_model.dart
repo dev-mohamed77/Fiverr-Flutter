@@ -74,6 +74,7 @@ class MessageDataModel extends MessageDataEntity {
   final MessageUserModel user;
 
   const MessageDataModel({
+    required super.id,
     required super.message,
     required super.sender,
     required this.conversation,
@@ -84,6 +85,7 @@ class MessageDataModel extends MessageDataEntity {
   }) : super(conversation: conversation, seller: seller, user: user);
 
   MessageDataModel copyWith({
+    String? id,
     String? message,
     String? sender,
     MessageConversationModel? conversation,
@@ -93,6 +95,7 @@ class MessageDataModel extends MessageDataEntity {
     String? updatedAt,
   }) {
     return MessageDataModel(
+      id: id ?? this.id,
       message: message ?? this.message,
       sender: sender ?? this.sender,
       conversation: conversation ?? this.conversation,
@@ -105,6 +108,7 @@ class MessageDataModel extends MessageDataEntity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'message': message,
       'sender': sender,
       'conversation': conversation.toMap(),
@@ -117,6 +121,7 @@ class MessageDataModel extends MessageDataEntity {
 
   factory MessageDataModel.fromMap(Map<String, dynamic> map) {
     return MessageDataModel(
+      id: map['id'] ?? "",
       message: map['message'] ?? "",
       sender: map['sender'] ?? "",
       conversation: MessageConversationModel.fromMap(
@@ -238,10 +243,9 @@ class MessageSellerModel extends MessageSellerEntity {
   factory MessageSellerModel.fromMap(Map<String, dynamic> map) {
     return MessageSellerModel(
       id: map['id'] ?? "",
-      fullName: map.containsKey("fullName") ? map['fullName'] ?? "" : "",
-      displayName:
-          map.containsKey("displayName") ? map['displayName'] ?? "" : "",
-      picture: map.containsKey("picture") ? map['picture'] ?? "" : "",
+      fullName: map['fullName'] ?? "",
+      displayName: map['displayName'] ?? "",
+      picture: map['picture'] ?? "",
     );
   }
 
@@ -304,8 +308,8 @@ class MessageUserModel extends MessageUserEntity {
   factory MessageUserModel.fromMap(Map<String, dynamic> map) {
     return MessageUserModel(
       id: map['id'] ?? "",
-      name: map.containsKey("name") ? map['name'] ?? "" : "",
-      email: map.containsKey("email") ? map['email'] ?? "" : "",
+      name: map['name'] ?? "",
+      email: map['email'] ?? "",
     );
   }
 

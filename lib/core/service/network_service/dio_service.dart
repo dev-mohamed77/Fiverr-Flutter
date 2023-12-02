@@ -17,7 +17,7 @@ class DioService implements DioNetWorkService {
   final Ref ref;
 
   DioService._({required this.ref}) {
-    const localUrl = 'https://sore-jade-camel-tam.cyclic.app/api/';
+    const localUrl = 'http://192.168.1.6:3000/api/';
 
     _dio = ref.watch(dioProvider.call(localUrl));
 

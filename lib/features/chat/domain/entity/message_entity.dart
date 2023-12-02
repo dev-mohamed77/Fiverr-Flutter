@@ -18,6 +18,7 @@ class MessagesEntity extends Equatable {
 }
 
 class MessageDataEntity extends Equatable {
+  final String id;
   final String message;
   final String sender;
   final MessageConversationEntity conversation;
@@ -27,6 +28,7 @@ class MessageDataEntity extends Equatable {
   final String updatedAt;
 
   const MessageDataEntity({
+    required this.id,
     required this.message,
     required this.sender,
     required this.conversation,
