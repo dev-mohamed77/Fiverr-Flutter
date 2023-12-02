@@ -10,6 +10,7 @@ import 'package:fiverr/core/manager/dialog/dialog_custom.dart';
 import 'package:fiverr/core/manager/router/routes.dart';
 import 'package:fiverr/core/manager/theme/app_color.dart';
 import 'package:fiverr/core/providers/user/user_provider.dart';
+import 'package:fiverr/features/language/presentation/manager/providers.dart';
 import 'package:fiverr/features/seller/presentation/managers/field_required.dart';
 import 'package:fiverr/features/seller/presentation/managers/image_picker_manager.dart';
 import 'package:fiverr/features/seller/presentation/managers/providers.dart';
@@ -66,6 +67,9 @@ class _PersonalInfoDataSectionState
                   "isSellerPage": false,
                 },
               );
+              ref
+                  .read(getLanguageBySellerIdUseCaseProvider.notifier)
+                  .execute(sellerId: data.id);
               ref
                   .read(userProvider.notifier)
                   .update((state) => state?.copyWith(isSeller: true));

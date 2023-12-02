@@ -9,8 +9,8 @@ class SellerAccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SellerAccountBody(isSellerLoggedUser: _isSellerLoggedUser),
+      body: SafeArea(
+          child: SellerAccountBody(isSellerLoggedUser: _isSellerLoggedUser)),
     );
   }
 }

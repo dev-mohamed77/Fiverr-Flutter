@@ -103,6 +103,7 @@ class _AddOccupationSectionState extends ConsumerState<AddOccupationSection> {
           children: [
             Expanded(
               child: TextFormFieldCustom(
+                keyboardType: TextInputType.datetime,
                 height: 48,
                 label: "From",
                 controller: fromController,
