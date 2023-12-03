@@ -86,11 +86,19 @@ class _ChatBodyState extends ConsumerState<ChatBody> {
           orElse: () {},
           data: (data) {
             if (data != null) {
+              // join chat room
               ref.watch(joinRoomSocketProvider.call(JoinRoomModel(
                 userId: data.user.id,
                 sellerId: data.seller.id,
               )));
+              // get Messages by ConversationId
+              ref
+                  .read(getMessagesByConversationIDUseCaseProvider.notifier)
+                  .execute(
+                    conversationId: data.id,
+                  );
 
+              // select Conversation
               ref
                   .read(selectConversationProvider.notifier)
                   .update((state) => data);
